@@ -45,15 +45,14 @@ public class Supermercado {
 	public void setnVendas(int nVendas) {
 		this.nVendas = nVendas;
 	}
-	public void venda(Item itemVendido, int quantVendido) {
+	public float venda(Item itemVendido, int quantVendido) {
 		if (itemVendido.verificaEstoque(quantVendido)) {
-			
+			itemVendido.reduzirEstoque(quantVendido);
+			float preco = itemVendido.getPreco() * quantVendido;
+			this.nVendas++;
+			return preco;
+		}else {
+			return 0;
 		}
-			
-		
-		itemVendido.reduzirEstoque(quantVendido);
-		
-		this.dinheiro += itemVendido.getPreco() * quantVendido;
-		this.nVendas++;
 	}
 }
