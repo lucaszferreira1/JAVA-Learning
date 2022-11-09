@@ -1,5 +1,10 @@
 package negocio;
 
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+
 public class Main {
 	public static void main(String args[]) throws URISyntaxException {
 		for (File f : getFiles("mp3")) {
