@@ -31,13 +31,17 @@ public class Principal {
                             break;
                     case 6: new CapitaesController().listarCapitaesBarcos(con);
                             break;
+                    case 7: new BarcosController().listarContTiposBarcos(con);
+                    	break;
+                    case 8: new BarcosController().listarBarcosSemCapitao(con);
+                		break;
                 }
             }catch(SQLException ex) {
                 //ex.printStackTrace();
                 System.out.println(ex.getMessage());
                 continue;
             }
-        } while(op>0 && op<7);  
+        } while(op>0 && op<9);  
         con.close();
     }    
     
@@ -50,6 +54,8 @@ public class Principal {
         System.out.println("4 - Exibir todos os Barcos");
         System.out.println("5 - Exibir todos os Funcionarios");
         System.out.println("6 - Exibir todos os Capitães e seus respectivos Barcos");
+        System.out.println("7 - Listar quantidade de cada tipo de Barco");
+        System.out.println("8 - Listar Barcos sem Capitão");
         System.out.println("Digite qualquer outro valor para sair");
         System.out.print("Sua opção: ");
         Scanner input = new Scanner(System.in);
