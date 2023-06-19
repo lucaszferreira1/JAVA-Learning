@@ -35,4 +35,21 @@ public class BarcosController {
             System.out.println(it.next().toString());
         }
     }
+    
+    public void listarContTiposBarcos(Connection con) throws SQLException {
+        HashSet all = BarcosModel.listNumeroTipoBarcos(con);
+        Iterator<String[]> it = all.iterator();
+        while(it.hasNext()) {
+        	String str[] = it.next();
+            System.out.println(str[1] + " = " + str[0]);
+        }
+    }
+    
+    public void listarBarcosSemCapitao(Connection con) throws SQLException {
+        HashSet all = BarcosModel.listBarcosSemCapitao(con);
+        Iterator<BarcoBean> it = all.iterator();
+        while(it.hasNext()) {
+            System.out.println(it.next().toString());
+        }
+    }
 }
