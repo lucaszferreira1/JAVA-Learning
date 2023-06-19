@@ -32,9 +32,9 @@ public class Principal {
                     case 6: new CapitaesController().listarCapitaesBarcos(con);
                             break;
                     case 7: new BarcosController().listarContTiposBarcos(con);
-                    	break;
+                    	    break;
                     case 8: new BarcosController().listarBarcosSemCapitao(con);
-                		break;
+                		    break;
                 }
             }catch(SQLException ex) {
                 //ex.printStackTrace();
