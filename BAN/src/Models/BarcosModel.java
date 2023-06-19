@@ -33,4 +33,29 @@ public class BarcosModel {
             }
         return list;
     }
+    
+    public static HashSet listNumeroTipoBarcos(Connection con) throws SQLException {
+        Statement st;
+        HashSet list = new HashSet();
+        st = con.createStatement();
+        String sql = "SELECT COUNT(ID) CONTA, TIPO FROM BARCO GROUP BY TIPO";
+        ResultSet result = st.executeQuery(sql);
+        while(result.next()) {
+        	String str[] = {Integer.toString(result.getInt(1)), result.getString(2)};
+        	list.add(str);
+        }
+        return list;
+    }
+    
+    public static HashSet listBarcosSemCapitao(Connection con) throws SQLException {
+        Statement st;
+        HashSet list = new HashSet();
+        st = con.createStatement();
+        String sql = "SELECT B.* FROM BARCO B WHERE B.ID NOT IN (SELECT ID_BARCO FROM CAPITAO)";
+        ResultSet result = st.executeQuery(sql);
+        while(result.next()) {
+        	list.add(new BarcoBean(result.getInt(1), result.getString(2), result.getString(3)));
+        }
+        return list;
+    }
 }
